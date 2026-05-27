@@ -21,6 +21,11 @@
 #include "BoundaryCondition.hpp"
 
 /**
+ * @brief Row-major dense matrix type used throughout the solver.
+ */
+using RowMatrix = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>;
+
+/**
  * @brief Distributed grid for the Jacobi/Schwarz solver.
  *
  * Owns the local solution matrix U_, the update U_new_, and the
@@ -92,21 +97,21 @@ public:
      * Dimensions: (localRows_+2) x n_.
      * Row 0 and row localRows_+1 are ghost rows.
      */
-    Eigen::MatrixXd& U() { return U_; }
-    const Eigen::MatrixXd& U() const { return U_; }
+    RowMatrix& U() { return U_; }
+    const RowMatrix& U() const { return U_; }
 
     /**
      * @brief Reference to the update buffer (same layout as U_).
      */
-    Eigen::MatrixXd& Unew() { return Unew_; }
-    const Eigen::MatrixXd& Unew() const { return Unew_; }
+    RowMatrix& Unew() { return Unew_; }
+    const RowMatrix& Unew() const { return Unew_; }
 
     /**
      * @brief Reference to the local forcing-term matrix.
      *
      * Dimensions: localRows_ x n_  (no ghost rows).
      */
-    const Eigen::MatrixXd& F() const { return F_; }
+    const RowMatrix& F() const { return F_; }
 
     /**
      * @brief Convert a local row index (1-based, excluding ghost rows) to a
@@ -136,9 +141,9 @@ private:
     int rowEnd_;      // Last global row (inclusive)
     int localRows_;   // Number of owned rows
 
-    Eigen::MatrixXd U_;    // Local solution + ghost rows  [(localRows+2) x n]
-    Eigen::MatrixXd Unew_; // Update buffer
-    Eigen::MatrixXd F_;    // Local forcing term           [localRows x n]
+    RowMatrix U_;    // Local solution + ghost rows  [(localRows+2) x n]
+    RowMatrix Unew_; // Update buffer
+    RowMatrix F_;    // Local forcing term           [localRows x n]
 
     /**
      * @brief Compute the balanced row decomposition.

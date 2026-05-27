@@ -25,9 +25,9 @@ double JacobiSolver::sweep()
     const double h2  = grid_.h() * grid_.h();
     const double inv4 = 0.25;
 
-    Eigen::MatrixXd& U    = grid_.U();
-    Eigen::MatrixXd& Unew = grid_.Unew();
-    const Eigen::MatrixXd& F = grid_.F();
+    RowMatrix& U    = grid_.U();
+    RowMatrix& Unew = grid_.Unew();
+    const RowMatrix& F = grid_.F();
 
     double localErr2 = 0.0;
 

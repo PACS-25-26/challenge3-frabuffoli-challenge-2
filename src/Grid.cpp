@@ -23,9 +23,9 @@ Grid::Grid(int n, int rank, int size)
     // Allocate matrices:
     //   U_ and Unew_ have (localRows_+2) rows to accommodate ghost rows.
     //   F_ has only localRows_ rows (no ghost rows needed for the forcing term).
-    U_ = Eigen::MatrixXd::Zero(localRows_ + 2, n_);
-    Unew_ = Eigen::MatrixXd::Zero(localRows_ + 2, n_);
-    F_ = Eigen::MatrixXd::Zero(localRows_, n_);
+    U_ = RowMatrix::Zero(localRows_ + 2, n_);
+    Unew_ = RowMatrix::Zero(localRows_ + 2, n_);
+    F_ = RowMatrix::Zero(localRows_, n_);
 }
 
 
@@ -197,44 +197,23 @@ void Grid::applyBoundaryConditions(const BoundaryCondition& bc)
 
 void Grid::exchangeGhostRows()
 {
-    // Row 1 (first owned) is sent to rank-1 as its bottom ghost.
-    // Row localRows_ (last owned) is sent to rank+1 as its top ghost.
-    // We receive:
-    //   - Row 0 (bottom ghost) from rank-1   -> rank-1's last owned row
-    //   - Row localRows_+1 (top ghost) from rank+1 -> rank+1's first owned row
-
     MPI_Status status;
 
-    const int tag_down = 0; // send downward (to rank-1)
-    const int tag_up   = 1; // send upward   (to rank+1)
+    const int TAG_UP   = 0; // message travelling toward rank+1
+    const int TAG_DOWN = 1; // message travelling toward rank-1
 
-    // Send first owned row down; receive top ghost from rank+1
-    {
-        double* sendBuf = U_.row(1).data();
-        double* recvBuf = U_.row(localRows_ + 1).data();
+    const int up   = (rank_ < size_ - 1) ? rank_ + 1 : MPI_PROC_NULL; // neighbour above
+    const int down = (rank_ > 0)          ? rank_ - 1 : MPI_PROC_NULL; // neighbour below
 
-        int dest   = (rank_ < size_ - 1) ? rank_ + 1 : MPI_PROC_NULL;
-        int source = (rank_ < size_ - 1) ? rank_ + 1 : MPI_PROC_NULL;
+    MPI_Sendrecv(
+        U_.row(localRows_).data(), n_, MPI_DOUBLE, up,   TAG_UP,
+        U_.row(0).data(),          n_, MPI_DOUBLE, down, TAG_UP,
+        MPI_COMM_WORLD, &status);
 
-        MPI_Sendrecv(
-            sendBuf, n_, MPI_DOUBLE, dest,   tag_down,
-            recvBuf, n_, MPI_DOUBLE, source, tag_down,
-            MPI_COMM_WORLD, &status);
-    }
-
-    // Send last owned row up; receive bottom ghost from rank-1
-    {
-        double* sendBuf = U_.row(localRows_).data();
-        double* recvBuf = U_.row(0).data();
-
-        int dest   = (rank_ > 0) ? rank_ - 1 : MPI_PROC_NULL;
-        int source = (rank_ > 0) ? rank_ - 1 : MPI_PROC_NULL;
-
-        MPI_Sendrecv(
-            sendBuf, n_, MPI_DOUBLE, dest,   tag_up,
-            recvBuf, n_, MPI_DOUBLE, source, tag_up,
-            MPI_COMM_WORLD, &status);
-    }
+    MPI_Sendrecv(
+        U_.row(1).data(),              n_, MPI_DOUBLE, down, TAG_DOWN,
+        U_.row(localRows_ + 1).data(), n_, MPI_DOUBLE, up,   TAG_DOWN,
+        MPI_COMM_WORLD, &status);
 }
 
 

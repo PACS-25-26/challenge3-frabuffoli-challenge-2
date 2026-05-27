@@ -3,8 +3,8 @@
  * @brief Implementation of BoundaryCondition: JSON loading and evaluation.
  */
 
-#include "BoundaryCondition.hpp"
-#include "Utils.hpp"
+#include "../include/BoundaryCondition.hpp"
+#include "../include/Utils.hpp"
 
 #include <sstream>
 #include <stdexcept>
