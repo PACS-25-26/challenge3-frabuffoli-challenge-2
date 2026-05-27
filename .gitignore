@@ -1,69 +1,32 @@
-# Prerequisites
-*.d
+# =============================================================================
+# .gitignore – Laplace Solver
+# =============================================================================
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# Build directories
+# Build artifacts
 build/
-Build/
-build-*/
+*.o
+*.a
+*.so
+laplace-solver
 
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
+# Results (large files; commit only representative outputs if desired)
+results/
 
-# Temporary files
-*.tmp
-*.log
-*.bak
+# Documentation
+docs/html/
+docs/latex/
+
+# IDE / editor files
+.vscode/
+.idea/
 *.swp
+*~
 
-# vcpkg
-vcpkg_installed/
+# OS files
+.DS_Store
+Thumbs.db
 
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
+# External headers (downloaded by scripts; not committed)
+# Comment these lines out if you want to commit the headers.
+# external/json.hpp
+# external/exprtk.hpp
