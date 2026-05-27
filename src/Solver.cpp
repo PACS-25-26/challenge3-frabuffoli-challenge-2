@@ -5,7 +5,7 @@
 
 #include "../include/Solver.hpp"
 #include "../include/JacobiSolver.hpp"
-//#include "../include/SchwarzSolver.hpp"
+#include "../include/SchwarzSolver.hpp"
 
 #include <stdexcept>
 #include <algorithm>
@@ -27,8 +27,8 @@ std::unique_ptr<Solver> Solver::create(const std::string&       type,
     if (t == "jacobi")
         return std::make_unique<JacobiSolver>(grid, bc, params);
 
-    /*if (t == "schwarz")
-        return std::make_unique<SchwarzSolver>(grid, bc, params);*/
+    if (t == "schwarz")
+        return std::make_unique<SchwarzSolver>(grid, bc, params);
 
     throw std::invalid_argument(
         "Solver::create – unknown solver type \"" + type + "\". "

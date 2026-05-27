@@ -1,5 +1,5 @@
 {
-    "top"    : { "type": "dirichlet", "expr": "0.0" },
+    "top"    : { "type": "neumann", "expr": "1.0" },
     "bottom" : { "type": "dirichlet", "expr": "0.0" },
     "left"   : { "type": "dirichlet", "expr": "0.0" },
     "right"  : { "type": "dirichlet", "expr": "0.0" }
