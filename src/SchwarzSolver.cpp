@@ -17,7 +17,9 @@ SchwarzSolver::SchwarzSolver(Grid&                    grid,
                               const SolverParams&      params)
     : Solver(grid, bc, params)
 {
-    // Interior columns: j = 1 .. n-2  (exclude left/right Dirichlet walls)
+    // Interior columns: j = 1 .. n-2  (exclude left/right boundary walls)
+    // Boundary values are computed by applyBoundaryConditions after each iteration,
+    // supporting both Dirichlet and Neumann/Robin BC types.
     interiorCols_ = grid_.n() - 2;
 
     // Interior rows owned by this rank.
@@ -34,51 +36,40 @@ void SchwarzSolver::buildAndFactorMatrix()
     const int nDof = localInteriorRows_ * interiorCols_;
     const double h2inv = 1.0 / (grid_.h() * grid_.h());
 
-    // Estimate: at most 5 non-zeros per row
     std::vector<Eigen::Triplet<double>> trips;
     trips.reserve(5 * nDof);
 
-    for (int li = 1; li <= localInteriorRows_; ++li)      // local row (1-based)
+    for (int li = 1; li <= localInteriorRows_; ++li)
     {
-        for (int cj = 1; cj <= interiorCols_; ++cj)       // interior col (1-based)
+        for (int cj = 1; cj <= interiorCols_; ++cj)
         {
             const int idx = (li - 1) * interiorCols_ + (cj - 1);
 
-            // Diagonal: 4/h^2
             trips.emplace_back(idx, idx, 4.0 * h2inv);
 
-            // South neighbour (li-1, cj)
             if (li > 1)
             {
-                // Exists as an interior DOF of this rank
                 const int idxS = (li - 2) * interiorCols_ + (cj - 1);
                 trips.emplace_back(idx, idxS, -h2inv);
             }
-            // else: ghost row — contributes to RHS, not A_
 
-            // North neighbour (li+1, cj)
             if (li < localInteriorRows_)
             {
                 const int idxN = li * interiorCols_ + (cj - 1);
                 trips.emplace_back(idx, idxN, -h2inv);
             }
-            // else: ghost row — contributes to RHS
 
-            // West neighbour (li, cj-1)
             if (cj > 1)
             {
                 const int idxW = (li - 1) * interiorCols_ + (cj - 2);
                 trips.emplace_back(idx, idxW, -h2inv);
             }
-            // else: left Dirichlet wall — contributes to RHS
 
-            // East neighbour (li, cj+1)
             if (cj < interiorCols_)
             {
                 const int idxE = (li - 1) * interiorCols_ + cj;
                 trips.emplace_back(idx, idxE, -h2inv);
             }
-            // else: right Dirichlet wall — contributes to RHS
         }
     }
 
@@ -86,7 +77,6 @@ void SchwarzSolver::buildAndFactorMatrix()
     A_.setFromTriplets(trips.begin(), trips.end());
     A_.makeCompressed();
 
-    // Factorise once
     lu_.compute(A_);
     if (lu_.info() != Eigen::Success)
         throw std::runtime_error("SchwarzSolver: SparseLU factorisation failed");
@@ -106,24 +96,25 @@ SchwarzSolver::VecXd SchwarzSolver::assembleRHS() const
     {
         for (int cj = 1; cj <= interiorCols_; ++cj)
         {
-            const int j   = cj;          // global column index (j=0 is left wall)
+            const int j   = cj;
             const int idx = (li - 1) * interiorCols_ + (cj - 1);
 
-            // Forcing term: f(x,y)
             rhs(idx) = F(li - 1, j);
 
-            // Ghost-row contributions (treated as known Dirichlet data)
+            // Ghost-row contributions (top/bottom boundaries)
             if (li == 1)
-                rhs(idx) += h2inv * U(0, j);          // south ghost
+                rhs(idx) += h2inv * U(0, j);
 
             if (li == localInteriorRows_)
-                rhs(idx) += h2inv * U(localInteriorRows_ + 1, j); // north ghost
+                rhs(idx) += h2inv * U(localInteriorRows_ + 1, j);
 
-            // Left Dirichlet wall (always 0 for homogeneous; or non-zero BC)
-            rhs(idx) += h2inv * U(li, 0);
+            // Left boundary contribution (only for first interior column j=1)
+            if (cj == 1)
+                rhs(idx) += h2inv * U(li, 0);
 
-            // Right Dirichlet wall
-            rhs(idx) += h2inv * U(li, n - 1);
+            // Right boundary contribution (only for last interior column j=n-2)
+            if (cj == interiorCols_)
+                rhs(idx) += h2inv * U(li, n - 1);
         }
     }
 
@@ -161,7 +152,10 @@ void SchwarzSolver::solve()
         // 1. Exchange ghost rows with neighbours.
         grid_.exchangeGhostRows();
 
-        // 2. Assemble local RHS.
+        // 2. Re-apply boundary conditions BEFORE assembling RHS.
+        grid_.applyBoundaryConditions(bc_);
+
+        // 3. Assemble local RHS.
         VecXd rhs = assembleRHS();
 
         // 3. Solve local sub-system (reuse factorisation).
@@ -174,7 +168,7 @@ void SchwarzSolver::solve()
         double localErr2 = 0.0;
         {
             const RowMatrix& U = grid_.U();
-            
+
             #pragma omp parallel for reduction(+:localErr2) schedule(static)
             for (int li = 1; li <= localInteriorRows_; ++li)
             {
@@ -190,6 +184,8 @@ void SchwarzSolver::solve()
 
         // 5. Scatter solution into U_.
         scatterSolution(sol);
+
+        // 6. Re-apply boundary conditions AFTER scattering solution.
         grid_.applyBoundaryConditions(bc_);
 
         // 6. Global convergence check.
