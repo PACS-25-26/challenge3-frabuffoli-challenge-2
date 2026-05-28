@@ -98,10 +98,10 @@ void Grid::applyBoundaryConditions(const BoundaryCondition& bc)
             case BCType::Robin:
             {
                 // (U(li,1) - U(li,0)) / h + alpha * U(li,0) = g
-                // U(li,0) = (U(li,1)/h - g) / (1/h - alpha)
+                // U(li,0) = (U(li,1)/h - g) / (1/h + alpha)
                 double g     = bc.evaluate(Side::Left, y);
                 double alpha = bc.getAlpha(Side::Left);
-                U_(li, 0) = (U_(li, 1) / h - g) / (1.0 / h - alpha);
+                U_(li, 0) = (U_(li, 1) / h - g) / (1.0 / h + alpha);
                 break;
             }
         }
@@ -116,14 +116,14 @@ void Grid::applyBoundaryConditions(const BoundaryCondition& bc)
             case BCType::Neumann:
             {
                 double g = bc.evaluate(Side::Right, y);
-                U_(li, jR) = U_(li, jR - 1) + h * g;
+                U_(li, jR) = U_(li, jR - 1) - h * g;
                 break;
             }
             case BCType::Robin:
             {
                 double g     = bc.evaluate(Side::Right, y);
                 double alpha = bc.getAlpha(Side::Right);
-                U_(li, jR) = (U_(li, jR - 1) / h + g) / (1.0 / h + alpha);
+                U_(li, jR) = (U_(li, jR - 1) / h - g) / (1.0 / h + alpha);
                 break;
             }
         }
@@ -154,7 +154,7 @@ void Grid::applyBoundaryConditions(const BoundaryCondition& bc)
                 {
                     double g     = bc.evaluate(Side::Bottom, x);
                     double alpha = bc.getAlpha(Side::Bottom);
-                    U_(0, j) = (U_(1, j) / h - g) / (1.0 / h - alpha);
+                    U_(0, j) = (U_(1, j) / h - g) / (1.0 / h + alpha);
                     break;
                 }
             }
@@ -176,14 +176,14 @@ void Grid::applyBoundaryConditions(const BoundaryCondition& bc)
                 case BCType::Neumann:
                 {
                     double g = bc.evaluate(Side::Top, x);
-                    U_(localRows_ + 1, j) = U_(localRows_, j) + h * g;
+                    U_(localRows_ + 1, j) = U_(localRows_, j) - h * g;
                     break;
                 }
                 case BCType::Robin:
                 {
                     double g     = bc.evaluate(Side::Top, x);
                     double alpha = bc.getAlpha(Side::Top);
-                    U_(localRows_ + 1, j) = (U_(localRows_, j) / h + g) / (1.0 / h + alpha);
+                    U_(localRows_ + 1, j) = (U_(localRows_, j) / h - g) / (1.0 / h + alpha);
                     break;
                 }
             }

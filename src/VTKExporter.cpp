@@ -65,6 +65,23 @@ void VTKExporter::exportSolution(const Grid& grid, const std::string& filename) 
                 recvBuf.data(),  recvCounts.data(), displs.data(),
                 MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
+    const int TAG_TOP = 77;
+    std::vector<double> bottomRow(n, 0.0);
+    std::vector<double> topRow(n, 0.0);
+
+    if (grid.isBottom())
+        for (int j = 0; j < n; ++j) bottomRow[j] = grid.U()(0, j);
+
+    if (grid.isTop())
+    {
+        for (int j = 0; j < n; ++j) topRow[j] = grid.U()(lr + 1, j);
+        if (rank != 0)
+            MPI_Send(topRow.data(), n, MPI_DOUBLE, 0, TAG_TOP, MPI_COMM_WORLD);
+    }
+    if (rank == 0 && size > 1)
+        MPI_Recv(topRow.data(), n, MPI_DOUBLE, size - 1, TAG_TOP,
+                 MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
     if (rank == 0)
     {
         // Reconstruct the full nxn matrix.
@@ -88,6 +105,12 @@ void VTKExporter::exportSolution(const Grid& grid, const std::string& filename) 
                     Ufull(gi, j) = recvBuf[displs[r] / n * n + li * n + j];
                 }
             }
+        }
+
+        for (int j = 0; j < n; ++j)
+        {
+            Ufull(0,     j) = bottomRow[j]; // y = 0
+            Ufull(n - 1, j) = topRow[j];    // y = 1
         }
 
         // Rebuild boundary rows from BCs (zero for homogeneous Dirichlet).
