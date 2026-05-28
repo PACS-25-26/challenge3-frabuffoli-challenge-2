@@ -1,32 +1,16 @@
-# =============================================================================
-# .gitignore – Laplace Solver
-# =============================================================================
-
-# Build artifacts
 build/
-*.o
-*.a
-*.so
 laplace-solver
-
-# Results (large files; commit only representative outputs if desired)
 results/
-
-# Documentation
-docs/html/
-docs/latex/
-
-# IDE / editor files
-.vscode/
-.idea/
-*.swp
-*~
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# External headers (downloaded by scripts; not committed)
-# Comment these lines out if you want to commit the headers.
-# external/json.hpp
-# external/exprtk.hpp
+test/*/results.log
+test/*/plot.png
+test/*/np*/
+test/*/mpi*/
+test/*/jacobi_*/
+test/*/schwarz_*/
+test/*/n[0-9]*/
+test/RESULT.md
+test/hw.info
+bench_*.out
+bench_*.err
+*.o
+*.vtk

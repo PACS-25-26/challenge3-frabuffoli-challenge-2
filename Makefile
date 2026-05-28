@@ -1,94 +1,85 @@
 # =============================================================================
-# Makefile – Parallel Laplace Solver (MPI + OpenMP + Eigen)
-# =============================================================================
+# Makefile — Parallel Laplace Solver (MPI + OpenMP)
 #
-# Usage:
-#   make            – build the solver executable
-#   make clean      – remove object files and executable
-#   make distclean  – also remove the results directory
-#   make docs       – generate Doxygen HTML documentation
+# SELF-CONTAINED BUILD: all third-party dependencies are bundled in external/
+#   - nlohmann/json : header-only      (external/json.hpp)
+#   - Eigen 3.4     : header-only      (external/eigen3/)
+#   - muParser 2.3  : compiled from source (external/muparser/)
+# The ONLY external requirement is an MPI compiler (mpicxx) with OpenMP.
 #
-# The Makefile auto-detects the Eigen include path via pkg-config.
-# If Eigen is not installed system-wide, set EIGEN_INC manually:
-#   make EIGEN_INC=/path/to/eigen
+# On a cluster (e.g. CINECA) you do NOT need to install anything or request
+# permissions — just load an MPI module and build in your home directory:
+#
+#     module load openmpi        # or intelmpi, etc. (provides mpicxx)
+#     make
+#
+# Targets:
+#   make            build ./laplace-solver
+#   make clean      remove build/ and the binary
+#   make distclean  also remove results/
 # =============================================================================
 
-# ── Compiler and flags ────────────────────────────────────────────────────────
-CXX      := mpicxx
-CXXFLAGS := -std=c++17 -O2 -Wall -Wextra -fopenmp
+# ── Compiler ──────────────────────────────────────────────────────────────────
+CXX      ?= mpicxx
+CXXFLAGS := -std=c++17 -O3 -Wall -Wextra -fopenmp
 
-# ── Eigen include path ────────────────────────────────────────────────────────
-# Try pkg-config first; fall back to common system paths.
-EIGEN_INC ?= $(shell pkg-config --cflags eigen3 2>/dev/null | sed 's/-I//')
-ifeq ($(EIGEN_INC),)
-    # Fallback search
-    EIGEN_CANDIDATES := /usr/include/eigen3 \
-                        /usr/local/include/eigen3 \
-                        $(HOME)/include/eigen3
-    EIGEN_INC := $(firstword $(foreach d,$(EIGEN_CANDIDATES),$(wildcard $(d))))
-endif
+# ── Bundled dependencies (no system libraries needed) ─────────────────────────
+EXTERNAL   := external
+EIGEN_INC  := $(EXTERNAL)/eigen3
+JSON_INC   := $(EXTERNAL)
+MUPARSER   := $(EXTERNAL)/muparser
+MUPARSER_INC := $(MUPARSER)/include
+MUPARSER_SRC := $(MUPARSER)/src
 
-ifeq ($(EIGEN_INC),)
-    $(error "Eigen3 not found. Set EIGEN_INC=/path/to/eigen or install via 'apt install libeigen3-dev'")
-endif
+INCLUDES := -Iinclude -I$(JSON_INC) -I$(EIGEN_INC) -I$(MUPARSER_INC)
 
-# ── Include paths ─────────────────────────────────────────────────────────────
-INCLUDES := -Iinclude -Iexternal -I$(EIGEN_INC)
-
-# ── Source and object files ───────────────────────────────────────────────────
+# ── Project sources ───────────────────────────────────────────────────────────
 SRC_DIR := src
 OBJ_DIR := build
-
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SOURCES))
 
-# ── Target ────────────────────────────────────────────────────────────────────
+# ── muParser sources (compiled from source, bundled) ──────────────────────────
+# Exclude the Windows DLL wrapper and the bundled test driver.
+MU_SOURCES := $(filter-out $(MUPARSER_SRC)/muParserDLL.cpp $(MUPARSER_SRC)/muParserTest.cpp, \
+                           $(wildcard $(MUPARSER_SRC)/*.cpp))
+MU_OBJECTS := $(patsubst $(MUPARSER_SRC)/%.cpp, $(OBJ_DIR)/muparser_%.o, $(MU_SOURCES))
+
 TARGET := laplace-solver
 
-# =============================================================================
-# Default target
 # =============================================================================
 .PHONY: all
 all: $(TARGET)
 	@echo ""
-	@echo "  Build successful → ./$(TARGET)"
-	@echo "  Run with:  ./run.sh"
+	@echo "  Build OK -> ./$(TARGET)   (fully self-contained, no system libs)"
 	@echo ""
 
-$(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ -lmuparser
+$(TARGET): $(OBJECTS) $(MU_OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# ── Compile each source file ──────────────────────────────────────────────────
+# Project objects
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+# muParser objects (compiled once, from bundled source).
+# muParser headers are not -Wall clean on every compiler, so silence warnings.
+$(OBJ_DIR)/muparser_%.o: $(MUPARSER_SRC)/%.cpp | $(OBJ_DIR)
+	$(CXX) -std=c++17 -O3 -w -I$(MUPARSER_INC) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 # =============================================================================
-# Clean targets
-# =============================================================================
-.PHONY: clean distclean
+.PHONY: clean distclean info
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
 
 distclean: clean
 	rm -rf results/
 
-# =============================================================================
-# Documentation (requires Doxygen)
-# =============================================================================
-.PHONY: docs
-docs:
-	doxygen Doxyfile
-	@echo "Docs generated in docs/html/index.html"
-
-# =============================================================================
-# Info target
-# =============================================================================
-.PHONY: info
 info:
-	@echo "CXX      = $(CXX)"
-	@echo "CXXFLAGS = $(CXXFLAGS)"
-	@echo "EIGEN    = $(EIGEN_INC)"
-	@echo "SOURCES  = $(SOURCES)"
+	@echo "CXX       = $(CXX)"
+	@echo "CXXFLAGS  = $(CXXFLAGS)"
+	@echo "INCLUDES  = $(INCLUDES)"
+	@echo "SOURCES   = $(SOURCES)"
+	@echo "MU_SOURCES= $(MU_SOURCES)"
