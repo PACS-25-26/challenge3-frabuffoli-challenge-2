@@ -1,16 +1,7 @@
 build/
 laplace-solver
-results/
-test/*/results.log
-test/*/plot.png
-test/*/np*/
-test/*/mpi*/
-test/*/jacobi_*/
-test/*/schwarz_*/
-test/*/n[0-9]*/
-test/RESULT.md
-test/hw.info
 bench_*.out
 bench_*.err
 *.o
 *.vtk
+.vscode/

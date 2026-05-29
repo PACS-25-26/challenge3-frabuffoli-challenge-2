@@ -1,0 +1,10 @@
+{
+    "n": 32,
+    "f": "8*pi^2*sin(2*pi*x)*sin(2*pi*y)",
+    "solver": "jacobi",
+    "exact": "sin(2*pi*x)*sin(2*pi*y)",
+    "tol": 1e-09,
+    "max_iter": 2000000,
+    "omp_threads": 2,
+    "n_procs": 4
+}

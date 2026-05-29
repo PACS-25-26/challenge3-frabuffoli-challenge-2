@@ -75,12 +75,20 @@ def run_case(case_dir: Path) -> dict:
 
     (case_dir / "results").mkdir(exist_ok=True)
 
-    cmd = ["mpirun", "--oversubscribe", "-np", str(np_procs), str(BINARY)]
+    # Note: no --oversubscribe flag — that's OpenMPI-only and breaks Intel MPI.
+    # On CINECA nodes (48 cores) we never oversubscribe anyway.
+    cmd = ["mpirun", "-np", str(np_procs), str(BINARY)]
     t0 = time.time()
-    subprocess.run(cmd, cwd=case_dir, env=env,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                   check=True)
+    result = subprocess.run(cmd, cwd=case_dir, env=env,
+                            stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
+                            text=True)
     wall = time.time() - t0
+
+    if result.returncode != 0:
+        print(f"    ERROR: mpirun exited with status {result.returncode}", file=sys.stderr)
+        if result.stderr:
+            print(f"    stderr:\n{result.stderr}", file=sys.stderr)
+        sys.exit(1)
 
     return parse_log(case_dir / "results" / "run.log", wall)
 
@@ -421,7 +429,7 @@ def main():
 
     if not BINARY.exists():
         sys.exit(f"ERROR: binary not found at {BINARY}\n"
-                 f"Build it first:  (cd {REPO_DIR} && module load openmpi && make)")
+                 f"Build it first:  (cd {REPO_DIR} && module load <mpi> && make)")
 
     collect_hw()
     selected = [args.only] if args.only else [1, 2, 3, 4, 5]

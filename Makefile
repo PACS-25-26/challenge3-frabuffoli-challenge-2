@@ -20,7 +20,7 @@
 # =============================================================================
 
 # ── Compiler ──────────────────────────────────────────────────────────────────
-CXX      ?= mpicxx
+CXX      = mpicxx
 CXXFLAGS := -std=c++17 -O3 -Wall -Wextra -fopenmp
 
 # ── Bundled dependencies (no system libraries needed) ─────────────────────────

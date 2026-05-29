@@ -4,26 +4,12 @@
 #SBATCH --ntasks-per-node=48
 #SBATCH --cpus-per-task=1
 #SBATCH --time=02:00:00
+#SBATCH --partition=g100_usr_prod
 #SBATCH --output=bench_%j.out
 #SBATCH --error=bench_%j.err
 #SBATCH --account=IscrC_EXTA-PMF
 #SBATCH --mail-type=BEGIN,END
 #SBATCH --mail-user=francesco.buffoli@mail.polimi.it
-# =============================================================================
-# submit_benchmark.sh — run the full Laplace benchmark suite on one node.
-#
-# Submit with:
-#     sbatch submit_benchmark.sh
-#
-# What it does:
-#   1. loads the MPI + Python modules,
-#   2. (re)builds the self-contained binary from external/ sources,
-#   3. runs test/run_benchmarks.py, which generates cases, runs them,
-#      saves per-benchmark plots/logs and the aggregated RESULT.md.
-#
-# All dependencies (Eigen, muParser, nlohmann/json) are bundled under external/
-# and compiled from source, so no system numerical libraries are required.
-# Only an MPI module and Python with matplotlib/numpy are needed.
 # =============================================================================
 
 set -euo pipefail
@@ -34,10 +20,10 @@ echo "Nodes: $SLURM_NNODES  Tasks/node: $SLURM_NTASKS_PER_NODE"
 # ── Modules ───────────────────────────────────────────────────────────────────
 # Adjust these names to your CINECA system (run 'module avail' to check).
 module purge
-module load openmpi            # provides mpicxx + mpirun
-module load python             # provides python3 (+ matplotlib/numpy if available)
-# If matplotlib/numpy are missing, uncomment to install into your user space:
-# pip install --user matplotlib numpy
+module load autoload
+module load gcc/10.2.0
+module load openmpi/4.1.6--gcc--12.2.0
+module load cineca-hpyc/2023.10
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 # Resolve the repository root from the location of this script.
@@ -54,6 +40,9 @@ echo "Building solver ..."
 make clean
 make CXX=mpicxx
 echo "Build done."
+
+export OMPI_MCA_pml=ob1
+export OMPI_MCA_btl=vader,self
 
 # ── Run the benchmark suite ───────────────────────────────────────────────────
 # The Python driver launches mpirun internally for each case, sizing MPI ranks
