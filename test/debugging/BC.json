@@ -1,0 +1,6 @@
+{
+    "top"    : { "type": "dirichlet", "expr": "0.0"  },
+    "bottom" : { "type": "robin", "expr": "100.0" , "alpha": 10.0 },
+    "left"   : { "type": "dirichlet", "expr": "0.0" },
+    "right"  : { "type": "dirichlet", "expr": "0.0" }
+}

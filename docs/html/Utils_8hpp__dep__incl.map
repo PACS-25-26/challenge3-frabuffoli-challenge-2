@@ -1,0 +1,13 @@
+<map id="include/Utils.hpp" name="include/Utils.hpp">
+<area shape="rect" id="Node000001" title="Utility functions for expression evaluation and JSON parsing." alt="" coords="335,5,466,31"/>
+<area shape="rect" id="Node000002" href="$BoundaryCondition_8cpp.html" title="Implementation of BoundaryCondition: JSON loading and evaluation." alt="" coords="5,79,201,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="340,36,152,81,151,76,339,31"/>
+<area shape="rect" id="Node000003" href="$Grid_8cpp.html" title="Implementation of Grid: decomposition, initialisation, ghost&#45;row exchange." alt="" coords="226,79,325,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="370,40,297,81,295,76,367,35"/>
+<area shape="rect" id="Node000004" href="$Utils_8cpp.html" title="Implementation of utility functions using muParser and nlohmann/json." alt="" coords="349,79,452,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="403,44,403,79,398,79,398,44"/>
+<area shape="rect" id="Node000005" href="$VTKExporter_8cpp.html" title="Implementation of VTK legacy structured&#45;points exporter." alt="" coords="477,79,629,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="438,34,529,76,527,81,436,39"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html" title="Entry point for the parallel Laplace solver." alt="" coords="653,79,759,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="464,31,657,76,656,81,462,36"/>
+</map>

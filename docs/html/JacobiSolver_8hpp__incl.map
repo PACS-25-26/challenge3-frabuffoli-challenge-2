@@ -1,0 +1,24 @@
+<map id="include/JacobiSolver.hpp" name="include/JacobiSolver.hpp">
+<area shape="rect" id="Node000001" title="MPI+OpenMP Jacobi iterative solver for the Laplace equation." alt="" coords="99,5,279,31"/>
+<area shape="rect" id="Node000002" href="$Solver_8hpp.html" title="Abstract base class for iterative solvers." alt="" coords="144,79,235,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,31,192,65,187,65,187,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,83,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="167,106,81,148,79,144,165,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="141,299,200,324"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="189,105,180,152,174,224,173,285,168,285,169,224,175,152,184,104"/>
+<area shape="rect" id="Node000005" href="$Grid_8hpp.html" title="Local grid owned by one MPI rank, with ghost&#45;row communication." alt="" coords="189,152,267,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="198,103,218,139,213,141,193,106"/>
+<area shape="rect" id="Node000007" href="$BoundaryCondition_8hpp.html" title="Boundary condition descriptor for the Laplace solver." alt="" coords="335,225,510,251"/>
+<area shape="poly" id="edge12_Node000002_Node000007" title=" " alt="" coords="209,102,394,216,391,220,207,106"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="223,179,198,226,179,286,174,284,194,224,219,176"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="209,225,311,251"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="236,177,252,212,247,214,231,179"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="260,175,379,218,377,223,258,180"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="383,253,214,301,212,296,381,248"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="299,299,355,324"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="409,253,355,292,352,288,406,249"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="379,299,466,324"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="425,251,425,285,420,285,420,251"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="491,299,637,324"/>
+<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="447,248,530,290,528,295,444,253"/>
+</map>

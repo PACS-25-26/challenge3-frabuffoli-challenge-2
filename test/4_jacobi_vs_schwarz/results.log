@@ -1,0 +1,10 @@
+# Jacobi vs Schwarz: tol=1e-6, NP=4
+# solver   n    iters  time     L2          
+  jacobi   16   135    0.0385   0.028555    
+  jacobi   32   531    0.305    0.00950241  
+  jacobi   64   1987   2.2505   0.003091599 
+  jacobi   128  7221   15.9269  0.0003340057
+  schwarz  16   40     0.023    0.02856441  
+  schwarz  32   76     0.0862   0.009549494 
+  schwarz  64   148    0.3479   0.003290705 
+  schwarz  128  287    1.4396   0.001148763 

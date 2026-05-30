@@ -1,0 +1,20 @@
+[10:55:20]  ------------------------------------------------------------
+[10:55:20]  Laplace Solver – Configuration
+[10:55:20]  ------------------------------------------------------------
+[10:55:20]    Solver method   : schwarz
+[10:55:20]    Grid size       : 32 x 32
+[10:55:20]    Grid spacing h  : 0.032258
+[10:55:20]    MPI processes   : 4
+[10:55:20]    OpenMP threads  : 1
+[10:55:20]    Tolerance       : 1.00e-06
+[10:55:20]    Max iterations  : 500000
+[10:55:20]  ------------------------------------------------------------
+[10:55:20]  Grid initialised  |  rank 0 owns rows [1, 8]
+[10:55:20]  Starting schwarz solver …
+[10:55:21]  Convergence after 76 iteration(s)  |  final error = 9.9224e-07
+[10:55:21]  Solve time : 0.0862 s
+[10:55:21]  L2 error vs exact solution  |  n=32  h=0.03226  L2=9.549494e-03
+[10:55:21]  Solution written to results/solution.vtk
+[10:55:21]  Exact solution written to results/exact.vtk
+[10:55:21]  ------------------------------------------------------------
+[10:55:21]  Done.

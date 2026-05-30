@@ -1,0 +1,11 @@
+<map id="JacobiSolver" name="JacobiSolver">
+<area shape="rect" id="Node000001" title="Jacobi solver with hybrid MPI/OpenMP parallelism." alt="" coords="257,608,375,693"/>
+<area shape="rect" id="Node000002" href="$classSolver.html" title="Abstract interface for iterative solvers." alt="" coords="263,333,369,559"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="319,573,319,608,313,608,313,573"/>
+<area shape="rect" id="Node000003" href="$classGrid.html" title="Distributed grid for the Jacobi/Schwarz solver." alt="" coords="5,5,211,271"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="200,270,256,351,251,354,196,273"/>
+<area shape="rect" id="Node000004" href="$classBoundaryCondition.html" title="Boundary conditions class." alt="" coords="235,55,397,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="319,221,319,317,313,317,313,221"/>
+<area shape="rect" id="Node000005" href="$structSolverParams.html" title="Parameters common to all solvers, read from setup.json." alt="" coords="422,95,525,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="456,182,412,272,380,333,375,331,407,269,451,180"/>
+</map>

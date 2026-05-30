@@ -1,0 +1,20 @@
+[10:54:59]  ------------------------------------------------------------
+[10:54:59]  Laplace Solver – Configuration
+[10:54:59]  ------------------------------------------------------------
+[10:54:59]    Solver method   : jacobi
+[10:54:59]    Grid size       : 32 x 32
+[10:54:59]    Grid spacing h  : 0.032258
+[10:54:59]    MPI processes   : 4
+[10:54:59]    OpenMP threads  : 1
+[10:54:59]    Tolerance       : 1.00e-06
+[10:54:59]    Max iterations  : 500000
+[10:54:59]  ------------------------------------------------------------
+[10:54:59]  Grid initialised  |  rank 0 owns rows [1, 8]
+[10:54:59]  Starting jacobi solver …
+[10:54:59]  Convergence after 531 iteration(s)  |  final error = 9.9231e-07
+[10:54:59]  Solve time : 0.3050 s
+[10:54:59]  L2 error vs exact solution  |  n=32  h=0.03226  L2=9.502410e-03
+[10:54:59]  Solution written to results/solution.vtk
+[10:54:59]  Exact solution written to results/exact.vtk
+[10:54:59]  ------------------------------------------------------------
+[10:54:59]  Done.

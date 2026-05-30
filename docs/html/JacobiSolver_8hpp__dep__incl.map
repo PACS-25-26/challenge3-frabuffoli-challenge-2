@@ -1,0 +1,7 @@
+<map id="include/JacobiSolver.hpp" name="include/JacobiSolver.hpp">
+<area shape="rect" id="Node000001" title="MPI+OpenMP Jacobi iterative solver for the Laplace equation." alt="" coords="68,5,248,31"/>
+<area shape="rect" id="Node000002" href="$JacobiSolver_8cpp.html" title="Implementation of the MPI+OpenMP Jacobi iterative solver." alt="" coords="5,79,156,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,42,95,80,92,76,134,38"/>
+<area shape="rect" id="Node000003" href="$Solver_8cpp.html" title="Base Solver constructor and factory method." alt="" coords="181,79,293,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,38,226,76,222,80,179,42"/>
+</map>

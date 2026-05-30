@@ -1,0 +1,5 @@
+<map id="JacobiSolver" name="JacobiSolver">
+<area shape="rect" id="Node000001" title="Jacobi solver with hybrid MPI/OpenMP parallelism." alt="" coords="5,339,124,424"/>
+<area shape="rect" id="Node000002" href="$classSolver.html" title="Abstract interface for iterative solvers." alt="" coords="11,5,118,291"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,304,67,338,62,338,62,304"/>
+</map>

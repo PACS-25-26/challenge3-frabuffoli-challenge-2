@@ -1,0 +1,22 @@
+<map id="include/Solver.hpp" name="include/Solver.hpp">
+<area shape="rect" id="Node000001" title="Abstract base class for iterative solvers." alt="" coords="119,5,260,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,83,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,33,81,75,79,70,165,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="141,225,200,251"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,32,180,79,174,151,173,212,168,211,169,151,175,78,184,31"/>
+<area shape="rect" id="Node000004" href="$Grid_8hpp.html" title="Local grid owned by one MPI rank, with ghost&#45;row communication." alt="" coords="189,79,267,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="198,30,218,65,213,68,193,32"/>
+<area shape="rect" id="Node000006" href="$BoundaryCondition_8hpp.html" title="Boundary condition descriptor for the Laplace solver." alt="" coords="335,152,510,177"/>
+<area shape="poly" id="edge11_Node000001_Node000006" title=" " alt="" coords="209,29,394,142,391,147,207,33"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="223,105,198,153,179,212,174,211,194,151,219,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="209,152,311,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="236,103,252,139,247,141,231,105"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="260,102,379,145,377,150,258,107"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="383,180,214,227,212,222,381,175"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="299,225,355,251"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="409,180,355,219,352,215,406,175"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="379,225,466,251"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="425,178,425,212,420,212,420,178"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="491,225,637,251"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="447,175,530,217,528,221,444,180"/>
+</map>

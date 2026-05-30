@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classSolver.html" title="Abstract interface for iterative solvers." alt="" coords="5,31,68,56"/>
+<area shape="rect" id="Node000001" href="$classJacobiSolver.html" title="Jacobi solver with hybrid MPI/OpenMP parallelism." alt="" coords="123,5,226,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="81,33,123,25,124,30,82,38"/>
+<area shape="rect" id="Node000002" href="$classSchwarzSolver.html" title="Block&#45;Jacobi / one&#45;level additive Schwarz solver." alt="" coords="116,55,233,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="82,48,116,54,115,60,81,54"/>
+</map>

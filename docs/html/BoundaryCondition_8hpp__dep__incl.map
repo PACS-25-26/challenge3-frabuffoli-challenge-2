@@ -1,0 +1,33 @@
+<map id="include/BoundaryCondition.hpp" name="include/BoundaryCondition.hpp">
+<area shape="rect" id="Node000001" title="Boundary condition descriptor for the Laplace solver." alt="" coords="524,5,749,31"/>
+<area shape="rect" id="Node000002" href="$Grid_8hpp.html" title="Local grid owned by one MPI rank, with ghost&#45;row communication." alt="" coords="427,79,555,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="602,39,516,81,514,76,600,34"/>
+<area shape="rect" id="Node000003" href="$Solver_8hpp.html" title="Abstract base class for iterative solvers." alt="" coords="226,152,367,177"/>
+<area shape="poly" id="edge16_Node000001_Node000003" title=" " alt="" coords="558,36,488,54,417,81,356,118,311,154,308,150,353,114,414,76,486,49,556,31"/>
+<area shape="rect" id="Node000009" href="$main_8cpp.html" title="Entry point for the parallel Laplace solver." alt="" coords="495,225,600,251"/>
+<area shape="poly" id="edge18_Node000001_Node000009" title=" " alt="" coords="671,36,711,63,748,98,762,118,770,138,770,159,760,179,739,191,698,204,601,228,599,223,697,199,736,186,756,175,765,157,764,139,757,120,744,101,707,67,668,40"/>
+<area shape="rect" id="Node000013" href="$BoundaryCondition_8cpp.html" title="Implementation of BoundaryCondition: JSON loading and evaluation." alt="" coords="821,79,1017,104"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="696,31,874,76,873,81,695,37"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="448,111,329,154,328,149,447,106"/>
+<area shape="poly" id="edge15_Node000002_Node000009" title=" " alt="" coords="463,114,447,128,434,144,428,160,432,176,445,192,462,205,500,223,498,228,459,210,442,196,428,179,423,160,430,141,443,124,460,110"/>
+<area shape="rect" id="Node000010" href="$VTKExporter_8hpp.html" title="Export the global solution to VTK format (structured points)." alt="" coords="565,152,746,177"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="531,107,630,149,627,154,529,112"/>
+<area shape="rect" id="Node000012" href="$Grid_8cpp.html" title="Implementation of Grid: decomposition, initialisation, ghost&#45;row exchange." alt="" coords="442,152,541,177"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="494,118,494,152,489,152,489,118"/>
+<area shape="rect" id="Node000004" href="$JacobiSolver_8hpp.html" title="MPI+OpenMP Jacobi iterative solver for the Laplace equation." alt="" coords="291,225,471,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="322,184,369,223,365,227,319,188"/>
+<area shape="rect" id="Node000006" href="$Solver_8cpp.html" title="Base Solver constructor and factory method." alt="" coords="197,299,309,324"/>
+<area shape="poly" id="edge9_Node000003_Node000006" title=" " alt="" coords="291,191,281,226,259,299,254,298,275,225,286,190"/>
+<area shape="rect" id="Node000007" href="$SchwarzSolver_8hpp.html" title="Block&#45;Jacobi (one&#45;level Schwarz) solver for the Laplace equation." alt="" coords="21,225,215,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="256,185,148,228,146,223,255,180"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="351,179,507,223,506,228,349,184"/>
+<area shape="rect" id="Node000005" href="$JacobiSolver_8cpp.html" title="Implementation of the MPI+OpenMP Jacobi iterative solver." alt="" coords="333,299,484,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="393,263,407,298,402,300,388,265"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="349,260,275,301,272,296,347,255"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="153,255,232,296,229,301,150,259"/>
+<area shape="rect" id="Node000008" href="$SchwarzSolver_8cpp.html" title="Block&#45;Jacobi (one&#45;level Schwarz) solver implementation." alt="" coords="5,299,172,324"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="110,265,96,300,91,298,105,263"/>
+<area shape="poly" id="edge13_Node000010_Node000009" title=" " alt="" coords="628,187,566,227,564,223,625,183"/>
+<area shape="rect" id="Node000011" href="$VTKExporter_8cpp.html" title="Implementation of VTK legacy structured&#45;points exporter." alt="" coords="625,225,777,251"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="672,188,696,224,691,227,668,191"/>
+</map>

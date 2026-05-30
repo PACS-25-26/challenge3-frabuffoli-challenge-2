@@ -1,0 +1,7 @@
+<map id="Solver" name="Solver">
+<area shape="rect" id="Node000001" title="Abstract interface for iterative solvers." alt="" coords="86,5,193,291"/>
+<area shape="rect" id="Node000002" href="$classJacobiSolver.html" title="Jacobi solver with hybrid MPI/OpenMP parallelism." alt="" coords="5,339,124,424"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,304,81,339,76,337,87,303"/>
+<area shape="rect" id="Node000003" href="$classSchwarzSolver.html" title="Block&#45;Jacobi / one&#45;level additive Schwarz solver." alt="" coords="149,339,282,424"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="193,303,204,337,199,339,188,304"/>
+</map>

@@ -1,0 +1,34 @@
+<map id="src/JacobiSolver.cpp" name="src/JacobiSolver.cpp">
+<area shape="rect" id="Node000001" title="Implementation of the MPI+OpenMP Jacobi iterative solver." alt="" coords="349,5,499,31"/>
+<area shape="rect" id="Node000002" href="$JacobiSolver_8hpp.html" title="MPI+OpenMP Jacobi iterative solver for the Laplace equation." alt="" coords="93,79,285,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="387,33,241,77,240,72,386,28"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="309,79,368,104"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="412,33,365,72,361,68,409,29"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="393,79,455,104"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="427,31,427,65,421,65,421,31"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="479,79,542,104"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="440,29,488,68,484,72,436,33"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="567,79,647,104"/>
+<area shape="poly" id="edge17_Node000001_Node000015" title=" " alt="" coords="454,28,565,71,563,76,452,33"/>
+<area shape="rect" id="Node000003" href="$Solver_8hpp.html" title="Abstract base class for iterative solvers." alt="" coords="144,152,235,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="192,104,192,138,187,138,187,104"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,225,83,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="167,180,81,222,79,217,165,175"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="141,372,200,397"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="189,178,180,226,174,298,173,358,168,358,169,297,175,225,184,177"/>
+<area shape="rect" id="Node000006" href="$Grid_8hpp.html" title="Local grid owned by one MPI rank, with ghost&#45;row communication." alt="" coords="189,225,267,251"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="198,176,218,212,213,215,193,179"/>
+<area shape="rect" id="Node000008" href="$BoundaryCondition_8hpp.html" title="Boundary condition descriptor for the Laplace solver." alt="" coords="335,299,510,324"/>
+<area shape="poly" id="edge13_Node000003_Node000008" title=" " alt="" coords="209,175,394,289,391,294,207,180"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="223,252,198,300,179,359,174,357,194,298,219,250"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="209,299,311,324"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="236,250,252,285,247,287,231,252"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="260,248,379,291,377,296,258,253"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="383,327,214,374,212,369,381,321"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="299,372,355,397"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="409,326,355,366,352,361,406,322"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="379,372,466,397"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="425,324,425,358,420,358,420,324"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="491,372,637,397"/>
+<area shape="poly" id="edge12_Node000008_Node000011" title=" " alt="" coords="447,322,530,363,528,368,444,326"/>
+</map>
