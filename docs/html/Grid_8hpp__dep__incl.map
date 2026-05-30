@@ -1,0 +1,27 @@
+<map id="include/Grid.hpp" name="include/Grid.hpp">
+<area shape="rect" id="Node000001" title="Local grid owned by one MPI rank, with ghost&#45;row communication." alt="" coords="513,5,641,31"/>
+<area shape="rect" id="Node000002" href="$Solver_8hpp.html" title="Abstract base class for iterative solvers." alt="" coords="301,79,442,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="532,38,405,81,404,76,530,33"/>
+<area shape="rect" id="Node000008" href="$main_8cpp.html" title="Entry point for the parallel Laplace solver." alt="" coords="493,152,599,177"/>
+<area shape="poly" id="edge14_Node000001_Node000008" title=" " alt="" coords="560,43,549,60,541,79,537,99,538,118,545,151,540,152,533,119,532,98,535,78,544,58,555,40"/>
+<area shape="rect" id="Node000009" href="$VTKExporter_8hpp.html" title="Export the global solution to VTK format (structured points)." alt="" coords="550,79,731,104"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="598,39,632,77,628,80,594,43"/>
+<area shape="rect" id="Node000011" href="$Grid_8cpp.html" title="Implementation of Grid: decomposition, initialisation, ghost&#45;row exchange." alt="" coords="755,79,854,104"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="627,32,769,76,767,81,626,37"/>
+<area shape="rect" id="Node000003" href="$JacobiSolver_8hpp.html" title="MPI+OpenMP Jacobi iterative solver for the Laplace equation." alt="" coords="19,152,199,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,110,152,154,151,149,315,105"/>
+<area shape="rect" id="Node000005" href="$Solver_8cpp.html" title="Base Solver constructor and factory method." alt="" coords="181,225,293,251"/>
+<area shape="poly" id="edge8_Node000002_Node000005" title=" " alt="" coords="323,112,292,129,264,154,253,171,246,191,240,225,235,224,241,189,249,169,260,150,288,125,321,107"/>
+<area shape="rect" id="Node000006" href="$SchwarzSolver_8hpp.html" title="Block&#45;Jacobi (one&#45;level Schwarz) solver for the Laplace equation." alt="" coords="274,152,469,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="374,118,374,152,369,152,369,118"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="413,107,518,149,516,154,411,112"/>
+<area shape="rect" id="Node000004" href="$JacobiSolver_8cpp.html" title="Implementation of the MPI+OpenMP Jacobi iterative solver." alt="" coords="5,225,156,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="101,191,88,226,83,224,97,189"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="143,182,217,223,214,227,140,186"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="339,186,260,227,257,223,336,181"/>
+<area shape="rect" id="Node000007" href="$SchwarzSolver_8cpp.html" title="Block&#45;Jacobi (one&#45;level Schwarz) solver implementation." alt="" coords="316,225,483,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="383,189,397,224,392,226,379,191"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="616,114,563,154,560,150,613,110"/>
+<area shape="rect" id="Node000010" href="$VTKExporter_8cpp.html" title="Implementation of VTK legacy structured&#45;points exporter." alt="" coords="623,152,775,177"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="661,113,692,150,688,154,657,116"/>
+</map>

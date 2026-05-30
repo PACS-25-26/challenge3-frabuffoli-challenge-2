@@ -1,0 +1,16 @@
+<map id="include/Grid.hpp" name="include/Grid.hpp">
+<area shape="rect" id="Node000001" title="Local grid owned by one MPI rank, with ghost&#45;row communication." alt="" coords="82,5,210,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,108,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,33,84,72,80,68,130,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="117,152,175,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,31,149,138,143,138,143,31"/>
+<area shape="rect" id="Node000004" href="$BoundaryCondition_8hpp.html" title="Boundary condition descriptor for the Laplace solver." alt="" coords="184,79,359,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,28,240,69,238,74,165,33"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="253,106,180,147,177,143,250,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="199,152,255,177"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="266,106,244,142,239,139,262,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="280,152,367,177"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="282,103,309,139,305,142,278,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="391,152,538,177"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="303,102,421,145,420,150,301,107"/>
+</map>

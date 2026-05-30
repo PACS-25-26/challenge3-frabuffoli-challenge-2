@@ -1,6 +1,8 @@
 # Benchmark suite (Python-driven)
 
 A single Python script generates, runs, plots and aggregates all 5 benchmarks.
+Used for benchmark on CINECA Galileo100, can be used for local benchmarking 
+(generates "_LOCAL" files and directories).
 
 ## Prerequisites
 

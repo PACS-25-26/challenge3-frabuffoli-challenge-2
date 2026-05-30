@@ -16,6 +16,7 @@
 # Targets:
 #   make            build ./laplace-solver
 #   make clean      remove build/ and the binary
+#   make doc        generate Doxygen documentation (requires doxygen)
 #   make distclean  also remove results/
 # =============================================================================
 
@@ -83,3 +84,9 @@ info:
 	@echo "INCLUDES  = $(INCLUDES)"
 	@echo "SOURCES   = $(SOURCES)"
 	@echo "MU_SOURCES= $(MU_SOURCES)"
+
+# ── Doxygen documentation ────────────────────────────────────────────────────
+.PHONY: doc
+doc:
+	doxygen Doxyfile
+	@echo "Documentation generated in docs/html/index.html"

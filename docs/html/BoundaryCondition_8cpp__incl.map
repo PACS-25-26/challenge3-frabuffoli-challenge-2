@@ -1,0 +1,21 @@
+<map id="src/BoundaryCondition.cpp" name="src/BoundaryCondition.cpp">
+<area shape="rect" id="Node000001" title="Implementation of BoundaryCondition: JSON loading and evaluation." alt="" coords="139,5,335,31"/>
+<area shape="rect" id="Node000002" href="$BoundaryCondition_8hpp.html" title="Boundary condition descriptor for the Laplace solver." alt="" coords="226,79,463,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,28,317,69,314,73,253,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,152,92,177"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="140,29,89,47,67,61,50,80,43,93,41,108,44,138,38,139,35,108,38,92,45,77,64,57,87,42,138,24"/>
+<area shape="rect" id="Node000007" href="$Utils_8hpp.html" title="Utility functions for expression evaluation and JSON parsing." alt="" coords="59,79,201,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="221,33,160,73,157,69,218,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="487,79,562,104"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="284,28,475,75,474,80,282,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="287,152,346,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="343,105,329,140,324,138,338,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="370,152,426,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="356,103,383,140,379,143,351,106"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="298,107,106,152,105,147,296,101"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="117,152,263,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="321,106,229,149,227,144,319,102"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="161,102,275,145,273,150,159,107"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="119,106,74,145,70,141,115,102"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="142,103,174,140,169,143,138,106"/>
+</map>
